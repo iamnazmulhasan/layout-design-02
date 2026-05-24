@@ -10,56 +10,43 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Layout Design 02',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: const Color(0xFF141E20),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Layout Design 02'),
+      home: const SecondaryNumbersScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class SecondaryNumbersScreen extends StatelessWidget {
+  const SecondaryNumbersScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+      backgroundColor: const Color(0xFF141E20),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 24.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text(
+                'Secondary Numbers',
+                style: TextStyle(
+                  color: Color(0xFF98A6B8),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 0.2,
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
