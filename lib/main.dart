@@ -34,8 +34,8 @@ class SecondaryNumbersScreen extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text(
+            children: [
+              const Text(
                 'Secondary Numbers',
                 style: TextStyle(
                   color: Color(0xFF98A6B8),
@@ -44,9 +44,91 @@ class SecondaryNumbersScreen extends StatelessWidget {
                   letterSpacing: 0.2,
                 ),
               ),
+              const SizedBox(height: 18),
+              _buildNumberCard(
+                phoneNumber: '+1 (555) 987-6543',
+                subtitle: 'Home • Added 2mo ago',
+              ),
+              const SizedBox(height: 16),
+              _buildNumberCard(
+                phoneNumber: '+44 20 7123 4567',
+                subtitle: 'Work • Unverified',
+              ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildNumberCard({
+    required String phoneNumber,
+    required String subtitle,
+  }) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 18.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFF1C2627),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 52,
+            height: 52,
+            decoration: const BoxDecoration(
+              color: Color(0xFF273233),
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(
+              Icons.phone,
+              color: Color(0xFF98A6B8),
+              size: 24,
+            ),
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  phoneNumber,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  subtitle,
+                  style: const TextStyle(
+                    color: Color(0xFF8A97A6),
+                    fontSize: 14,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                Icons.edit,
+                color: Color(0xFF98A6B8),
+                size: 22,
+              ),
+              SizedBox(width: 20),
+              Icon(
+                Icons.delete,
+                color: Color(0xFF98A6B8),
+                size: 22,
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
