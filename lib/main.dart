@@ -35,6 +35,7 @@ class SecondaryNumbersScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Section Header: "Secondary Numbers"
               const Text(
                 'Secondary Numbers',
                 style: TextStyle(
@@ -45,11 +46,15 @@ class SecondaryNumbersScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 18),
+
+              // First Card: +1 (555) 987-6543
               _buildNumberCard(
                 phoneNumber: '+1 (555) 987-6543',
                 subtitle: 'Home • Added 2mo ago',
               ),
               const SizedBox(height: 16),
+
+              // Second Card: +44 20 7123 4567
               _buildNumberCard(
                 phoneNumber: '+44 20 7123 4567',
                 subtitle: 'Work • Unverified',
@@ -67,13 +72,33 @@ class SecondaryNumbersScreen extends StatelessWidget {
   }) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 18.0),
+      padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 20.0),
       decoration: BoxDecoration(
         color: const Color(0xFF1C2627),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(
+          color: Colors.white.withValues(alpha: 0.16),
+          width: 1.2,
+        ),
+        boxShadow: [
+          // Subtle bottom glow highlight
+          BoxShadow(
+            color: Colors.white.withValues(alpha: 0.22),
+            offset: const Offset(0, 3),
+            blurRadius: 8,
+            spreadRadius: -1,
+          ),
+          // Ambient drop shadow
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.5),
+            offset: const Offset(0, 5),
+            blurRadius: 12,
+          ),
+        ],
       ),
       child: Row(
         children: [
+          // Circular Phone Icon using Container and Icon
           Container(
             width: 52,
             height: 52,
@@ -88,6 +113,8 @@ class SecondaryNumbersScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 16),
+
+          // Details Column: Phone number & Subtitle
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,8 +124,9 @@ class SecondaryNumbersScreen extends StatelessWidget {
                   phoneNumber,
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: 19,
                     fontWeight: FontWeight.w600,
+                    letterSpacing: 0.2,
                   ),
                 ),
                 const SizedBox(height: 6),
@@ -107,24 +135,27 @@ class SecondaryNumbersScreen extends StatelessWidget {
                   style: const TextStyle(
                     color: Color(0xFF8A97A6),
                     fontSize: 14,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ],
             ),
           ),
+
+          // Action Icons Row: Edit & Delete
           const Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(
                 Icons.edit,
                 color: Color(0xFF98A6B8),
-                size: 22,
+                size: 23,
               ),
               SizedBox(width: 20),
               Icon(
                 Icons.delete,
                 color: Color(0xFF98A6B8),
-                size: 22,
+                size: 23,
               ),
             ],
           ),
